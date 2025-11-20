@@ -7,10 +7,14 @@ pipeline {
     stages{
         stage("Git checkout"){
             steps{
-                git branch: 'Jenkins', url: 'https://github.com/GunaranjanV/devops_engineer.git'
-                
+                git branch: 'Jenkins', url: 'https://github.com/GunaranjanV/devops_engineer.git'  
             }
         }    
+        stage("Maven clean"){
+            steps{
+                sh 'mvn clean'
+            }
+        }
         stage("Build Maven"){
             steps{
                 sh 'mvn clean install'
