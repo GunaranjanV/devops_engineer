@@ -1,27 +1,24 @@
 pipeline {
     agent any
-
     tools {
         maven 'Maven'
-        jdk 'java11'
+        jdk 'Java_11'
     }
-
-    stages {
-        stage('Git Checkout') {
-            steps {
+    stages{
+        stage("Git checkout"){
+            steps{
                 git branch: 'Jenkins', url: 'https://github.com/GunaranjanV/devops_engineer.git'
+                
             }
-        }
-
-        stage('Maven Clean') {
-            steps {
+        }    
+        stage("Maven clean"){
+            steps{
                 sh 'mvn clean'
             }
         }
-
-        stage('Build Maven') {
-            steps {
-                sh 'mvn install'
+        stage("Build Maven"){
+            steps{
+                sh 'mvn clean install'
             }
         }
     }
